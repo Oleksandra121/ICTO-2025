@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8">
+    <title>Земля-Місяць — VR</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <style>
+      body { margin: 0; overflow: hidden; }
+      a-scene { width: 100vw; height: 100vh; }
+    </style>
+  </head>
+  <body>
+    <a-scene background="color: #111">
+      <a-assets>
+        <img id="earth-texture" src="earth.jpg"/>
+        <img id="moon-texture" src="moon.jpg"/>
+      </a-assets>
+      <!-- Земля (з запасом колір якщо текстура не завантажиться) -->
+      <a-sphere
+        id="earth"
+        radius="9.6"
+        segments-height="32"
+        position="0 9.6 0"
+        src="#earth-texture"
+        color="#2b7cff"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 5100"
+      ></a-sphere>
+      <!-- Місяць -->
+      <a-sphere
+        id="moon"
+        radius="2.61"
+        segments-height="24"
+        position="26.85 9.6 0"
+        src="#moon-texture"
+        color="#cccccc"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 142800"
+      ></a-sphere>
+      <!-- Світло -->
+      <a-light type="point" position="40 15 0" intensity="2"></a-light>
+      <a-sky color="#222"></a-sky>
+      <a-camera position="0 12 60"></a-camera>
+    </a-scene>
+  </body>
+</html>
